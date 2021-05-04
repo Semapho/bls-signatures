@@ -80,3 +80,10 @@ jobs:
     - name: Test pure python implementation
       run: |
         python python-impl/impl-test.py
+
+    - name: Upload Windows exe's to artifacts
+      if: startsWith(matrix.os, 'windows')
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: Windows-Exe
+        path: ${{ github.workspace }}\build-win\Release\
